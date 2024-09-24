@@ -4,7 +4,7 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Sheet from '$lib/components/ui/sheet/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
-	import { BookHeart, Bird, Github } from 'lucide-svelte';
+	import { BookHeart, Bird, Github, ScrollText } from 'lucide-svelte';
 	import { ModeWatcher } from 'mode-watcher';
 
 	import Sun from 'lucide-svelte/icons/sun';
@@ -29,50 +29,54 @@
 
 <ModeWatcher />
 <!-- Layout for all pages -->
-<div class="grid min-h-screen w-full md:grid-cols-[200px_1fr] lg:grid-cols-[200px_1fr]">
+<div class="grid min-h-screen w-full md:grid-cols-[240px_1fr] lg:grid-cols-[240px_1fr]">
 	<div class="hidden border-r bg-muted/40 md:block">
 		<div class="flex h-full max-h-screen flex-col gap-2">
 			<div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-				<a href="/" class="flex items-center gap-2 font-semibold">
+				<a href="/" class="flex items-center gap-2 text-xl font-semibold">
 					<Bird class="h-6 w-6" />
 					<span class="">Volunteers.ua</span>
 				</a>
 			</div>
 
 			{#each menu as item}
-				<div class="flex-1">
-					<nav class="grid items-start px-2 text-sm font-medium lg:px-4">
-						<a
-							href={item.href}
-							class="flex items-center gap-3 rounded-lg px-3 py-2 {activeHref === item.href
-								? 'active'
-								: ''} text-muted-foreground transition-all hover:bg-primary/10 hover:text-primary"
-						>
+				<div class="w-full flex-1 py-4">
+					<nav class="grid px-2 text-lg font-medium lg:px-4">
+						<a href={item.href} class="flex items-center gap-3 rounded-lg px-3 py-2">
 							<svelte:component this={item.icon} class="h-4 w-4" />
-							{item.text}
+							{#if activeHref === item.href}
+								{item.text} 👉
+							{:else}
+								{item.text}
+							{/if}
 						</a>
 					</nav>
 				</div>
 			{/each}
-			<div class="mt-auto">
-				<Card.Header>
-					<Card.Title class="text-sm">Want to help?</Card.Title>
-					<Card.Description class="text-xs">
-						Join us at GitHub and help us improve Volunteers.ua together!
-					</Card.Description>
-				</Card.Header>
-				<Card.Content>
-					<Button
-						size="sm"
-						class="w-full"
-						href="https://github.com/wasylmowczan/volunteers.ua"
-						target="_blank"
-					>
-						<Github class="h-4 w-4" />
-						GitHub
-					</Button>
-				</Card.Content>
-			</div>
+
+			<!-- Bottom menu -->
+			<Card.Header>
+				<Card.Title class="text-sm">Want to help?</Card.Title>
+				<Card.Description class="text-xs">
+					Join us at GitHub and help us improve Volunteers.ua together!
+				</Card.Description>
+			</Card.Header>
+			<Card.Content>
+				<Button
+					variant="ghost"
+					size="sm"
+					class="flex w-full justify-start gap-2"
+					href="https://github.com/wasylmowczan/volunteers.ua"
+					target="_blank"
+				>
+					<Github class="h-4 w-4" />
+					GitHub
+				</Button>
+				<Button variant="ghost" size="sm" class="flex w-full justify-start gap-2" href="/changelog">
+					<ScrollText class="h-4 w-4" />
+					Changelog
+				</Button>
+			</Card.Content>
 		</div>
 	</div>
 
@@ -123,10 +127,3 @@
 		<footer class="fixed bottom-0 flex h-10 w-full items-center justify-center"></footer>
 	</div>
 </div>
-
-<style>
-	/* Add this CSS to style the active tab */
-	.active {
-		background-color: #f0f0f0; /* Light grey color */
-	}
-</style>

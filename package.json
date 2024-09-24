@@ -38,6 +38,8 @@
 		"bits-ui": "^0.21.15",
 		"clsx": "^2.1.1",
 		"cobe": "^0.6.3",
+		"lucide": "^0.445.0",
+		"lucide-static": "^0.445.0",
 		"lucide-svelte": "^0.445.0",
 		"mode-watcher": "^0.4.1",
 		"tailwind-merge": "^2.5.2",

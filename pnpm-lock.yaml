@@ -17,6 +17,12 @@ importers:
       cobe:
         specifier: ^0.6.3
         version: 0.6.3
+      lucide:
+        specifier: ^0.445.0
+        version: 0.445.0
+      lucide-static:
+        specifier: ^0.445.0
+        version: 0.445.0
       lucide-svelte:
         specifier: ^0.445.0
         version: 0.445.0(svelte@4.2.19)
@@ -1008,10 +1014,16 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
+  lucide-static@0.445.0:
+    resolution: {integrity: sha512-HPOV6NmhcTWqaeYjoV8LwkxP7AU6y0GbjLbRVBL6hCzLqEVczl7IMiG+hgVMBg+s8uDi356Em3And6B2tR+ilw==}
+
   lucide-svelte@0.445.0:
     resolution: {integrity: sha512-+4q7aL0fJArdAYw8CzO5DhfH4K5Hx/Z3JX5ggUDVMKjq6UHWWSvQ6wKOe7yNxc5muw22U7x3tzoLbHr/5pYPsg==}
     peerDependencies:
       svelte: ^3 || ^4 || ^5.0.0-next.42
+
+  lucide@0.445.0:
+    resolution: {integrity: sha512-Xkaf7xwXnx2DQj6dHAAnEsL8LI0iSeqh1ObVr6CTw9eYLpRchfXHzB+VL6qypqAy18jZmCY1bu4U652dCTHC3Q==}
 
   magic-string@0.30.11:
     resolution: {integrity: sha512-+Wri9p0QHMy+545hKww7YAu5NyzF8iomPL/RQazugQ9+Ez4Ic3mERMd8ZTX5rfK944j+560ZJi8iAwgak1Ac7A==}
@@ -2430,9 +2442,13 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
+  lucide-static@0.445.0: {}
+
   lucide-svelte@0.445.0(svelte@4.2.19):
     dependencies:
       svelte: 4.2.19
+
+  lucide@0.445.0: {}
 
   magic-string@0.30.11:
     dependencies:
