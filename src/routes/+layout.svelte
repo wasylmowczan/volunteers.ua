@@ -29,6 +29,7 @@
 
 <ModeWatcher />
 <!-- Layout for all pages -->
+
 <div class="grid min-h-screen w-full md:grid-cols-[240px_1fr] lg:grid-cols-[240px_1fr]">
 	<div class="hidden border-r bg-muted/40 md:block">
 		<div class="flex h-full max-h-screen flex-col gap-2">
@@ -124,6 +125,5 @@
 
 		<!-- Slot for page content -->
 		<slot></slot>
-		<footer class="fixed bottom-0 flex h-10 w-full items-center justify-center"></footer>
 	</div>
 </div>

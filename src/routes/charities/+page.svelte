@@ -1,10 +1,64 @@
 <script lang="ts">
 	// Importing components and defining charities array
 	import CharityOrgCard from '$lib/components/custom/CharityOrgCard.svelte';
+	import Badge from '@/components/ui/badge/badge.svelte';
 	import { Button } from '@/components/ui/button';
 	import Input from '@/components/ui/input/input.svelte';
 
+	enum Badges {
+		Army = 'Army',
+		Civilians = 'Civilians',
+		Medical = 'Medical',
+		Infrastructure = 'Infrastructure',
+		EducationAndScience = 'Education and Science',
+		Veterans = 'Veterans',
+		Relief = 'Relief',
+		Advocacy = 'Advocacy'
+	}
+
 	const charities = [
+		{
+			logo: '/logos/united24.svg',
+			name: 'United24',
+			description:
+				'United24 is a Ukrainian government-run platform launched on 5 May 2022 to raise money for Ukraine in the Russo-Ukrainian War. The funds are transferred to the accounts of the National Bank of Ukraine and assigned to the relevant ministries: the Ministry of Defense, the Ministry of Healthcare, and the Ministry of Infrastructure. The reports on the platform are updated daily.',
+			projects: [
+				{
+					name: '🏗️ All projects',
+					url: 'https://u24.gov.ua/projects'
+				}
+			],
+			links: [
+				{
+					label: '🪖 Help the army',
+					url: 'https://u24.gov.ua/'
+				},
+				{
+					label: '📦 Help civilians',
+					url: 'https://u24.gov.ua/'
+				},
+				{
+					label: '💊 Medical aid',
+					url: 'https://u24.gov.ua/'
+				},
+				{
+					label: '🏗️ Rebuild Ukraine',
+					url: 'https://u24.gov.ua/'
+				},
+				{
+					label: '🎒 Education and Science',
+					url: 'https://u24.gov.ua/'
+				}
+			],
+			badges: [
+				Badges.Army,
+				Badges.Civilians,
+				Badges.Medical,
+				Badges.Infrastructure,
+				Badges.EducationAndScience
+			],
+			buttonLink: 'https://u24.gov.ua/'
+		},
 		{
 			logo: '/logos/prytula.svg',
 			name: 'Serhiy Prytula Charity Foundation',
@@ -30,7 +84,7 @@
 					url: 'https://prytulafoundation.org/support-foundation'
 				}
 			],
-			badges: ['Army', 'Civilians', 'Medical'],
+			badges: [Badges.Army, Badges.Civilians, Badges.Medical],
 			buttonLink: 'https://prytulafoundation.org/'
 		},
 		{
@@ -54,23 +108,43 @@
 					url: 'https://savelife.in.ua/en/donate-en/#donate-fund-card-once'
 				}
 			],
-			badges: ['Army', 'Civilians', 'Veterans'],
+			badges: [Badges.Army, Badges.Civilians, Badges.Veterans],
 			buttonLink: 'https://savelife.in.ua/'
+		},
+		{
+			logo: '/logos/razom.png',
+			name: 'Razom for Ukraine',
+			description:
+				'Razom, which means “together” in Ukrainian, believes deeply in the enormous potential of dedicated volunteers around the world united by a single goal: to unlock the potential of Ukraine. Razom works towards that mission by creating spaces where people meet, partner and do. Razom was born out of the Revolution of Dignity in 2014 when millions of people worked together and risked their lives to build a pathway to a better future for Ukraine.  Those who were unable to be in Ukraine during this time, wanted to do their part to help the movement as best they could from abroad. Many sent funds and supplies to sustain the community built on the Maidan through the winter, but they also took to the streets in their own cities to raise awareness and amplify voices from Ukraine in the West.',
+			projects: [
+				{
+					name: '🏗️ All programs',
+					url: 'https://www.razomforukraine.org/programs/'
+				}
+			],
+			links: [
+				{
+					label: '💸 Donate to foundation',
+					url: 'https://www.razomforukraine.org/donate/'
+				}
+			],
+			badges: [Badges.Army, Badges.Medical, Badges.Relief, Badges.Advocacy],
+			buttonLink: 'https://www.razomforukraine.org/'
 		}
 	];
 
 	// Variables to manage filtering and search
-	let activeFilter: string | null = null;
+	let activeFilter: Badges | null = null;
 	let filteredCharities = charities;
 	let searchQuery: string = '';
 
 	// Function to filter charities by category
-	function filterCharities(category: string) {
+	function filterCharities(category: Badges | null) {
 		activeFilter = category;
-		if (category === 'All') {
-			filteredCharities = charities;
-		} else {
+		if (category) {
 			filteredCharities = charities.filter((charity) => charity.badges.includes(category));
+		} else {
+			filteredCharities = charities;
 		}
 	}
 
@@ -84,25 +158,15 @@
 </script>
 
 <div class="flex justify-center gap-2 pt-4">
+	{#each Object.values(Badges) as badge}
+		<Button
+			variant={activeFilter === badge ? 'default' : 'outline'}
+			on:click={() => filterCharities(badge)}>{badge}</Button
+		>
+	{/each}
 	<Button
-		variant={activeFilter === 'Army' ? 'outline' : 'outline'}
-		on:click={() => filterCharities('Army')}>Army</Button
-	>
-	<Button
-		variant={activeFilter === 'Civilians' ? 'default' : 'outline'}
-		on:click={() => filterCharities('Civilians')}>Civilians</Button
-	>
-	<Button
-		variant={activeFilter === 'Medical' ? 'default' : 'outline'}
-		on:click={() => filterCharities('Medical')}>Medical</Button
-	>
-	<Button
-		variant={activeFilter === 'Veterans' ? 'default' : 'outline'}
-		on:click={() => filterCharities('Veterans')}>Veterans</Button
-	>
-	<Button
-		variant={activeFilter === 'All' ? 'default' : 'outline'}
-		on:click={() => filterCharities('All')}>All</Button
+		variant={activeFilter === null ? 'default' : 'outline'}
+		on:click={() => filterCharities(null)}>All</Button
 	>
 </div>
 
@@ -118,7 +182,9 @@
 	<p class="text-center text-sm text-muted-foreground">Showing <strong>All Charities</strong></p>
 {/if}
 
-<div class="grid grid-cols-1 justify-items-center p-2 pt-4 md:grid-cols-2">
+<div
+	class="grid grid-cols-1 justify-items-center gap-4 p-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3"
+>
 	{#each filteredCharities as charity}
 		<div class="group relative">
 			<CharityOrgCard

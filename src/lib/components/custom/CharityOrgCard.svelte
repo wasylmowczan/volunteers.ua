@@ -16,7 +16,7 @@
 	let logoSrc = logo;
 </script>
 
-<Card.Root class="h-full w-full max-w-[650px]">
+<Card.Root class="mx-auto flex h-full w-full max-w-[600px] flex-col">
 	<Card.Header>
 		<Card.Title>
 			<div class="flex items-center gap-2">
@@ -28,7 +28,7 @@
 			{description}
 		</Card.Description>
 	</Card.Header>
-	<Card.Content class="flex flex-col gap-4">
+	<Card.Content class="flex flex-grow flex-col gap-4">
 		<Card.Description>
 			<ScrollArea class="w-full whitespace-nowrap rounded-md border" orientation="horizontal">
 				<div class="flex w-max space-x-4 p-4">
@@ -42,7 +42,7 @@
 				</div>
 			</ScrollArea>
 		</Card.Description>
-		<div class="flex gap-2">
+		<div class="flex flex-wrap gap-2">
 			{#each badges as badge (badge)}
 				<Badge>{badge}</Badge>
 			{/each}
@@ -54,7 +54,7 @@
 			</div>
 		{/each}
 	</Card.Content>
-	<Card.Footer class="flex justify-center">
+	<Card.Footer class="mt-auto flex justify-center">
 		<Button href={buttonLink} target="_blank">Visit org website!</Button>
 	</Card.Footer>
 </Card.Root>
