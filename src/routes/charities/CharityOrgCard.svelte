@@ -32,7 +32,7 @@
 		<Card.Description>
 			<ScrollArea class="w-full whitespace-nowrap rounded-md border" orientation="horizontal">
 				<div class="flex w-max space-x-4 p-4">
-					{#each projects as project, index}
+					{#each projects as project}
 						<div class="flex items-center gap-2">
 							<a href={project.url} target="_blank" class="text-blue-500 hover:text-blue-700"
 								>{project.name}</a

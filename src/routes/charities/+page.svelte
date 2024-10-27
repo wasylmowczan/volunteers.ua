@@ -1,7 +1,6 @@
 <script lang="ts">
 	// Importing components and defining charities array
 	import CharityOrgCard from './CharityOrgCard.svelte';
-	import Badge from '@/components/ui/badge/badge.svelte';
 	import { Button } from '@/components/ui/button';
 	import Input from '@/components/ui/input/input.svelte';
 
