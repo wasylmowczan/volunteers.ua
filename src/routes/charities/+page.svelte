@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Importing components and defining charities array
-	import CharityOrgCard from '$lib/components/custom/CharityOrgCard.svelte';
+	import CharityOrgCard from './CharityOrgCard.svelte';
 	import Badge from '@/components/ui/badge/badge.svelte';
 	import { Button } from '@/components/ui/button';
 	import Input from '@/components/ui/input/input.svelte';
@@ -16,6 +16,7 @@
 		Advocacy = 'Advocacy'
 	}
 
+	// Data
 	const charities = [
 		{
 			logo: '/logos/united24.svg',
@@ -110,6 +111,34 @@
 			],
 			badges: [Badges.Army, Badges.Civilians, Badges.Veterans],
 			buttonLink: 'https://savelife.in.ua/'
+		},
+		{
+			logo: '/logos/hospitallers.png',
+			name: 'Medical battalion "Hospitallers"',
+			description:
+				'"Hospitallers" is a volunteer organization of paramedics. It was founded by Yana Zinkevich at the beginning of hostilities in Ukraine in 2014. Then Russia annexed Crimea and began hostilities in the east of the country. The slogan of our organization is "For the sake of every life". And hospitallers prove every day that for us these are not just words.',
+			projects: [
+				{
+					name: '💊 Our needs',
+					url: 'https://www.hospitallers.life/needs-hospitallers'
+				}
+			],
+			links: [
+				{
+					label: '💸 Finance support',
+					url: 'https://www.hospitallers.life/needs-hospitallers#w-tabs-0-data-w-pane-0'
+				},
+				{
+					label: '🚑 Medical support',
+					url: 'https://www.hospitallers.life/needs-hospitallers#w-tabs-0-data-w-pane-1'
+				},
+				{
+					label: '💉 Consumable and more...',
+					url: 'https://www.hospitallers.life/needs-hospitallers#w-tabs-0-data-w-pane-2'
+				}
+			],
+			badges: [Badges.Medical],
+			buttonLink: 'https://www.hospitallers.life/'
 		},
 		{
 			logo: '/logos/razom.png',

@@ -6,8 +6,9 @@
 	import BugIcon from 'lucide-svelte/icons/bug';
 	import FileTextIcon from 'lucide-svelte/icons/file-text';
 	import Particles from '$lib/components/custom/Particles.svelte';
+	import HammerIcon from 'lucide-svelte/icons/hammer';
 
-	type LogType = 'New Feature' | 'Maintenance' | 'Bugs' | 'Start';
+	type LogType = 'New Feature' | 'Maintenance' | 'Bugs' | 'Start' | 'Improvement';
 
 	interface Log {
 		type: LogType;
@@ -20,6 +21,19 @@
 	}
 
 	const changelog: ChangelogEntry[] = [
+		{
+			date: '2024-10-27',
+			logs: [
+				{
+					type: 'Improvement',
+					items: [
+						'Made side menu and header sticky',
+						'Add more charity organizations',
+						'Improve charities page design'
+					]
+				}
+			]
+		},
 		{
 			date: '2024-09-24',
 			logs: [
@@ -49,7 +63,8 @@
 		'New Feature': FlameIcon,
 		Maintenance: WrenchIcon,
 		Bugs: BugIcon,
-		Start: FileTextIcon
+		Start: FileTextIcon,
+		Improvement: HammerIcon
 	};
 
 	function getLogTypeIcon(type: LogType) {

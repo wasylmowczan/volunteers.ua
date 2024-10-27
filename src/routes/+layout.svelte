@@ -32,10 +32,10 @@
 
 <div class="grid min-h-screen w-full md:grid-cols-[240px_1fr] lg:grid-cols-[240px_1fr]">
 	<div class="hidden border-r bg-muted/40 md:block">
-		<div class="flex h-full max-h-screen flex-col gap-2">
+		<div class="sticky top-0 flex h-screen flex-col gap-2">
 			<div class="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
 				<a href="/" class="flex items-center gap-2 text-xl font-semibold">
-					<Bird class="h-6 w-6" />
+					<Bird class="h-10 w-8" />
 					<span class="">Volunteers.ua</span>
 				</a>
 			</div>
@@ -83,7 +83,9 @@
 
 	<!-- Mobile navigation -->
 	<div class="flex flex-col">
-		<header class="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+		<header
+			class="sticky top-0 z-50 flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6"
+		>
 			<Sheet.Root>
 				<Sheet.Trigger asChild let:builder>
 					<Button variant="outline" size="icon" class="shrink-0 md:hidden" builders={[builder]}>
