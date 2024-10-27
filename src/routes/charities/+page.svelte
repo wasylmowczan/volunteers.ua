@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { Button } from '$lib/components/ui/button';
+	import { Input } from '$lib/components/ui/input';
+
 	// Importing components and defining charities array
 	import CharityOrgCard from './CharityOrgCard.svelte';
-	import { Button } from '@/components/ui/button';
-	import Input from '@/components/ui/input/input.svelte';
 
 	enum Badges {
 		Army = 'Army',
